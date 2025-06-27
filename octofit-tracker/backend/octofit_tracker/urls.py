@@ -28,14 +28,17 @@ router.register(r'activity', views.ActivityViewSet)
 router.register(r'leaderboard', views.LeaderboardViewSet)
 router.register(r'workouts', views.WorkoutViewSet)
 
+
+# Use the Codespace URL for all API root links to avoid HTTPS/certificate issues
 @api_view(['GET'])
 def api_root(request, format=None):
+    base_url = 'https://sturdy-bassoon-5xjgqgwpp97cp7pv-8000.app.github.dev/api/'
     return Response({
-        'users': request.build_absolute_uri('users/'),
-        'teams': request.build_absolute_uri('teams/'),
-        'activity': request.build_absolute_uri('activity/'),
-        'leaderboard': request.build_absolute_uri('leaderboard/'),
-        'workouts': request.build_absolute_uri('workouts/'),
+        'users': base_url + 'users/',
+        'teams': base_url + 'teams/',
+        'activity': base_url + 'activity/',
+        'leaderboard': base_url + 'leaderboard/',
+        'workouts': base_url + 'workouts/',
     })
 
 urlpatterns = [
