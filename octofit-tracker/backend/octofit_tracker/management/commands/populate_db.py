@@ -1,5 +1,8 @@
 """
-This management command adds test data to the database for the OctoFit app.
+This management command populates the database with test data for the OctoFit app.
+
+This file is intended for use in Copilot agent mode and automated testing environments.
+It will CLEAR all existing data and ADD test data to all collections: users, teams, workouts, activities, and leaderboard.
 """
 from django.core.management.base import BaseCommand
 from octofit_tracker.models import User, Team, Activity, Leaderboard, Workout
@@ -16,7 +19,8 @@ class Command(BaseCommand):
         Leaderboard.objects.all().delete()
         Workout.objects.all().delete()
 
-        # USERS
+
+        # --- ADD TEST DATA TO USERS COLLECTION ---
         users = [
             User(email='octavia@mergington.edu', name='Octavia Coach', password='octavia123', team='OctoFit', is_coach=True),
             User(email='sam@mergington.edu', name='Sam Student', password='sam123', team='OctoFit', is_coach=False),
@@ -25,13 +29,13 @@ class Command(BaseCommand):
         ]
         User.objects.bulk_create(users)
 
-        # TEAMS
+        # --- ADD TEST DATA TO TEAMS COLLECTION ---
         teams = [
             Team(name='OctoFit', members=['sam@mergington.edu', 'jordan@mergington.edu', 'alex@mergington.edu'], coach='octavia@mergington.edu'),
         ]
         Team.objects.bulk_create(teams)
 
-        # WORKOUTS
+        # --- ADD TEST DATA TO WORKOUTS COLLECTION ---
         workouts = [
             Workout(workout_id='w1', name='Pushups', description='Do 20 pushups', duration=10, points=5),
             Workout(workout_id='w2', name='Running', description='Run 1 mile', duration=20, points=10),
@@ -39,7 +43,7 @@ class Command(BaseCommand):
         ]
         Workout.objects.bulk_create(workouts)
 
-        # ACTIVITIES
+        # --- ADD TEST DATA TO ACTIVITIES COLLECTION ---
         activities = [
             Activity(activity_id='a1', user_email='sam@mergington.edu', type='Pushups', duration=10, date=timezone.now(), points=5),
             Activity(activity_id='a2', user_email='jordan@mergington.edu', type='Running', duration=20, date=timezone.now(), points=10),
@@ -47,7 +51,7 @@ class Command(BaseCommand):
         ]
         Activity.objects.bulk_create(activities)
 
-        # LEADERBOARD
+        # --- ADD TEST DATA TO LEADERBOARD COLLECTION ---
         leaderboard = [
             Leaderboard(leaderboard_id='l1', team='OctoFit', points=18),
         ]
