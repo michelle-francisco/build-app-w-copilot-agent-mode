@@ -4,7 +4,10 @@ function Activities() {
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
-    fetch('https://sturdy-bassoon-5xjgqgwpp97cp7pv-8000.app.github.dev/api/activity/')
+    // Codespace Django REST API endpoint suffix for activities
+    const API_SUFFIX = '/api/activity/';
+    const API_BASE = 'https://sturdy-bassoon-5xjgqgwpp97cp7pv-8000.app.github.dev'; // Update if your codespace URL changes
+    fetch(`${API_BASE}${API_SUFFIX}`)
       .then(response => response.json())
       .then(data => setActivities(data))
       .catch(error => console.error('Error fetching activities:', error));
