@@ -74,7 +74,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "octofit_tracker.wsgi.application"
 
 
-# Database
+# Database - django
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
