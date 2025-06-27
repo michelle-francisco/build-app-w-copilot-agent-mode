@@ -1,3 +1,6 @@
+"""
+This management command adds test data to the database for the OctoFit app.
+"""
 from django.core.management.base import BaseCommand
 from octofit_tracker.models import User, Team, Activity, Leaderboard, Workout
 from django.utils import timezone
