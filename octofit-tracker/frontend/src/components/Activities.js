@@ -4,8 +4,8 @@ function Activities() {
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
-    // Codespace Django REST API endpoint suffix for activities
-    const API_SUFFIX = '/api/activity/';
+    // Codespace Django REST API endpoint suffix for activities (plural, to match Django REST convention)
+    const API_SUFFIX = '/api/activities/';
     const API_BASE = 'https://sturdy-bassoon-5xjgqgwpp97cp7pv-8000.app.github.dev'; // Update if your codespace URL changes
     fetch(`${API_BASE}${API_SUFFIX}`)
       .then(response => response.json())
