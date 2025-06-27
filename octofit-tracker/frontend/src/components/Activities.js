@@ -3,15 +3,12 @@ import React, { useEffect, useState } from 'react';
 function Activities() {
   const [activities, setActivities] = useState([]);
 
-  useEffect(() => {
-    // Codespace Django REST API endpoint suffix for activities (plural, to match Django REST convention)
-    const API_SUFFIX = '/api/activities/';
-    const API_BASE = 'https://sturdy-bassoon-5xjgqgwpp97cp7pv-8000.app.github.dev'; // Update if your codespace URL changes
-    fetch(`${API_BASE}${API_SUFFIX}`)
-      .then(response => response.json())
-      .then(data => setActivities(data))
-      .catch(error => console.error('Error fetching activities:', error));
-  }, []);
+    useEffect(() => {
+      fetch('https://sturdy-bassoon-5xjgqgwpp97cp7pv-8000.app.github.dev/api/activities/')
+        .then(response => response.json())
+        .then(data => setActivities(data))
+        .catch(error => console.error('Error fetching activities:', error));
+    }, []);
 
   return (
     <div className="card shadow mb-4">
